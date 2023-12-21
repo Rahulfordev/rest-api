@@ -1,11 +1,22 @@
 const express = require("express");
 const route = express.Router();
 
-route.post("/", (req, res, next) => {
+route.get("/", (req, res, next) => {
   res.status(200).json({
-    name: "sakib",
-    email: "sakib@gmail.com",
-    address: "magura",
+    message: "Hello, I'm All contacts",
+  });
+});
+
+route.post("/", (req, res, next) => {
+  const name = req.body.name;
+  const email = req.body.email;
+
+  console.log(name, email);
+
+  res.status(201).json({
+    message: "This is body parser res",
+    name,
+    email,
   });
 });
 
